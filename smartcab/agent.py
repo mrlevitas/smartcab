@@ -1,3 +1,5 @@
+from pdb import set_trace as bp
+
 import random
 import math
 from environment import Agent, Environment
@@ -55,7 +57,7 @@ class LearningAgent(Agent):
             are all features available to the agent. """
 
 
-        bitmap_8 = int('00000000', 2)
+        bitmap_9 = int('00000000', 2)
 
         # Collect data about the environment
         waypoint = self.planner.next_waypoint() # The next waypoint
@@ -66,26 +68,18 @@ class LearningAgent(Agent):
         print inputs
 
 
-        bitmap_8 = self.sense_light( bitmap_8, inputs   )
-        bitmap_8 = self.sense_surroundings(bitmap_8, inputs)
-        bitmap_8 = self.consider_direction(bitmap_8, waypoint)
+        bitmap_9 = self.sense_light( bitmap_9, inputs )
+        bitmap_9 = self.sense_surroundings(bitmap_9, inputs)
+        bitmap_9 = self.consider_direction(bitmap_9, waypoint)
 
         ###########
         ## TO DO ##
         ###########
 
-        state = ( int(bitmap_8), deadline)
-        # fz_state = frozenset( state)
+        state = ( int(bitmap_9), deadline)
+
         # Set 'state' as a tuple of relevant data for the agent
 
-
-        if self.learning == True:
-            if state in self.Q:
-                currentQ = self.Q[state][action]
-                self.Q[state][action] = reward*self.alpha + currentQ*(1-self.alpha)
-            else:
-                for act in self.valid_actions:
-                    self.Q[state][act] = 0
 
 
 
@@ -103,7 +97,12 @@ class LearningAgent(Agent):
 
         maxQ = None
 
-        return maxQ
+        action_hash = self.Q[state]
+        maxQaction = max(action_hash.iterkeys(), key=lambda k: action_hash[k])
+
+        maxQ = self.Q[state][maxQaction]
+
+        return (maxQaction, maxQ)
 
 
     def createQ(self, state):
@@ -112,12 +111,20 @@ class LearningAgent(Agent):
         ###########
         ## TO DO ##
         ###########
-        # When learning, check if the 'state' is not in the Q-table
-        # If it is not, create a new dictionary for that state
-        #   Then, for each action available, set the initial Q-value to 0.0
 
-        if state in self.Q:
-            self.Q[state][action] = reward*(1-self.alpha) + self.Q[state][action]
+        # When learning, check if the 'state' is not in the Q-table
+        if self.learning == True:
+            if state in self.Q:
+                # currentQ = self.Q[state][action]
+                reward = 1
+                # self.Q[state][action] = reward*self.alpha + currentQ*(1-self.alpha)
+            # If it is not, create a new dictionary for that state
+            else:
+                self.Q[state] = {}
+
+                #   Then, for each action available, set the initial Q-value to 0.0
+                for act in self.valid_actions:
+                    self.Q[state][act] = 0
 
         return
 
@@ -141,9 +148,16 @@ class LearningAgent(Agent):
 
         if self.learning == True:
             # assign Q learning value to action
-            action = choice(self.valid_actions, 1, p=self.epsilon)
+            rando = random.randint(0,99)
+
+            if rando < ( self.epsilon * 100 ) :
+                action = choice(self.valid_actions)
+            else:
+                max_action, maxQ = self.get_maxQ(state)
+                action = max_action
+
         else:
-            action = random.choice( self.valid_actions )
+            action = choice(self.valid_actions)
 
         return action
 
@@ -158,6 +172,10 @@ class LearningAgent(Agent):
         ###########
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
+
+        if self.learning == True:
+            currentQ = self.Q[state][action]
+            self.Q[state][action] = reward*self.alpha + currentQ*(1-self.alpha)
 
         return
 
@@ -175,24 +193,72 @@ class LearningAgent(Agent):
 
         return
 
-    def sense_light(self, bitmap_8, inputs):
+    def sense_light(self, bitmap_9, inputs):
+        """
+            Set the 0th bit of bitmap to represent binary nature of the light.
+        """
 
-        print inputs['light']
+        light = inputs['light']
+        bitmask = int('0000000000', 2)
 
-        return bitmap_8
+        if light == 'green' :
+            bitmask = int('0000000001', 2)
 
-    def sense_surroundings(self, bitmap_8, inputs):
+        bitmap_9 = bitmap_9|bitmask
 
-        print inputs['oncoming']
-        print inputs['left']
-        print inputs['right']
 
-        return bitmap_8
+        return bitmap_9
 
-    def consider_direction(self, bitmap_8, waypoint):
+    def sense_surroundings(self, bitmap_9, inputs):
+        """
+            Set the bits of bitmap that represent traffic condititons.
+            [1:7]
+        """
 
-        print waypoint
-        return bitmap_8
+        oncoming = inputs['oncoming']
+        left = inputs['left']
+        right = inputs['right']
+
+        oncoming_state = self.consider_intersection( oncoming )
+        left_state = self.consider_intersection( left )
+        right_state = self.consider_intersection( right )
+
+        bitmask = int('0000000000', 2)
+
+        bitmask = bitmask | (oncoming_state << 1 ) | (left_state << 3 ) | (right_state << 5 )
+
+        bitmap_9 = bitmap_9|bitmask
+
+        return bitmap_9
+
+    def consider_direction(self, bitmap_9, waypoint):
+        """
+            Set the bits of bitmap that represent direction to destination.
+            [8:9]
+        """
+
+        bitmask = int('0000000000', 2)
+        waypoint_state = self.consider_intersection( waypoint )
+
+        bitmask = bitmask | (waypoint_state << 7)
+
+        bitmap_9 = bitmap_9|bitmask
+
+        return bitmap_9
+
+    def consider_intersection(self, direction ):
+        quad_state = int('0000000000', 2)
+
+        if direction == 'left' :
+            quad_state = int('0000000001', 2)
+        elif direction == 'right' :
+            quad_state = int('0000000010', 2)
+        elif direction == 'forward' :
+            quad_state = int('0000000011', 2)
+        else:
+            quad_state = int('0000000000', 2)
+
+        return quad_state
 
 def run():
     """ Driving function for running the simulation.
