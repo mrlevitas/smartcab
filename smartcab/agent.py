@@ -52,8 +52,6 @@ class LearningAgent(Agent):
         else:
             trials_completed = self.trials_completed
             a = self.a
-            # self.epsilon = self.epsilon / float(trials_completed)
-            # self.epsilon = self.epsilon * np.exp( -1.0 * float(trials_completed) )
             self.epsilon = float(1)/math.exp(float( a * trials_completed) )
 
             self.trials_completed += 1
@@ -163,7 +161,7 @@ class LearningAgent(Agent):
         return action
 
 
-    def learn(self, state2, action, reward):
+    def learn(self, state, action, reward):
         """ The learn function is called after the agent completes an action and
             receives an award. This function does not consider future rewards
             when conducting learning. """
@@ -178,10 +176,10 @@ class LearningAgent(Agent):
 
         if self.learning == True:
             currentQ = self.Q[old_state][action]
-            max_action, maxQ = self.get_maxQ(state2)
+            max_action, maxQ = self.get_maxQ(state)
 
             if currentQ is 0:
-                self.Q[old_state][action] = reward #self.gamma*maxqnew
+                self.Q[old_state][action] = reward
             else:
                 self.Q[old_state][action] = (reward + maxQ- currentQ)*self.alpha + currentQ*(1-self.alpha)
 
