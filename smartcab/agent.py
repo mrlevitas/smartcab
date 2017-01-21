@@ -5,13 +5,14 @@ import math
 from environment import Agent, Environment
 from planner import RoutePlanner
 from simulator import Simulator
+import numpy as np
 from numpy.random import choice
 
 class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """
 
-    def __init__(self, env, learning=True, epsilon=1.0, alpha=0.5):
+    def __init__(self, env, learning=True, epsilon=1.0, alpha=0.2):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -21,6 +22,8 @@ class LearningAgent(Agent):
         self.Q = dict()          # Create a Q-table which will be a dictionary of tuples
         self.epsilon = epsilon   # Random exploration factor
         self.alpha = alpha       # Learning factor
+        self.trials_completed = 0
+        self.a = .01
 
         ###########
         ## TO DO ##
@@ -47,9 +50,14 @@ class LearningAgent(Agent):
             self.epsilon = 0
             self.alpha = 0
         else:
-            self.epsilon = self.epsilon - 0.05
+            trials_completed = self.trials_completed
+            a = self.a
+            # self.epsilon = self.epsilon / float(trials_completed)
+            # self.epsilon = self.epsilon * np.exp( -1.0 * float(trials_completed) )
+            self.epsilon = float(1)/math.exp(float( a * trials_completed) )
 
-        return None
+            self.trials_completed += 1
+        return
 
     def build_state(self):
         """ The build_state function is called when the agent requests data from the
@@ -64,10 +72,6 @@ class LearningAgent(Agent):
         inputs = self.env.sense(self)           # Visual input - intersection light and traffic
         deadline = self.env.get_deadline(self)  # Remaining deadline
 
-        print waypoint
-        print inputs
-
-
         bitmap_9 = self.sense_light( bitmap_9, inputs )
         bitmap_9 = self.sense_surroundings(bitmap_9, inputs)
         bitmap_9 = self.consider_direction(bitmap_9, waypoint)
@@ -76,10 +80,10 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
 
-        state = ( int(bitmap_9), deadline)
-
         # Set 'state' as a tuple of relevant data for the agent
+        # state = ( int(bitmap_9), deadline)
 
+        state = int(bitmap_9)
 
 
 
@@ -115,13 +119,10 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         if self.learning == True:
             if state in self.Q:
-                # currentQ = self.Q[state][action]
                 reward = 1
-                # self.Q[state][action] = reward*self.alpha + currentQ*(1-self.alpha)
             # If it is not, create a new dictionary for that state
             else:
                 self.Q[state] = {}
-
                 #   Then, for each action available, set the initial Q-value to 0.0
                 for act in self.valid_actions:
                     self.Q[state][act] = 0
@@ -162,7 +163,7 @@ class LearningAgent(Agent):
         return action
 
 
-    def learn(self, state, action, reward):
+    def learn(self, state2, action, reward):
         """ The learn function is called after the agent completes an action and
             receives an award. This function does not consider future rewards
             when conducting learning. """
@@ -173,9 +174,16 @@ class LearningAgent(Agent):
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
 
+        old_state = self.state
+
         if self.learning == True:
-            currentQ = self.Q[state][action]
-            self.Q[state][action] = reward*self.alpha + currentQ*(1-self.alpha)
+            currentQ = self.Q[old_state][action]
+            max_action, maxQ = self.get_maxQ(state2)
+
+            if currentQ is 0:
+                self.Q[old_state][action] = reward #self.gamma*maxqnew
+            else:
+                self.Q[old_state][action] = (reward + maxQ- currentQ)*self.alpha + currentQ*(1-self.alpha)
 
         return
 
