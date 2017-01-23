@@ -1,0 +1,1102 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+128
+ -- forward : -5.01
+ -- right : 0.31
+ -- None : 1.34
+ -- left : -5.17
+
+129
+ -- forward : 0.00
+ -- right : -0.00
+ -- None : -2.82
+ -- left : 0.57
+
+130
+ -- forward : -9.15
+ -- right : 0.29
+ -- None : 0.51
+ -- left : -9.06
+
+131
+ -- forward : 0.00
+ -- right : -0.41
+ -- None : 0.81
+ -- left : 0.46
+
+132
+ -- forward : -9.25
+ -- right : 0.00
+ -- None : 2.04
+ -- left : -39.13
+
+134
+ -- forward : 0.00
+ -- right : -0.08
+ -- None : 1.05
+ -- left : -9.48
+
+135
+ -- forward : 0.00
+ -- right : 1.03
+ -- None : -5.12
+ -- left : -19.56
+
+136
+ -- forward : 0.00
+ -- right : 0.01
+ -- None : 0.00
+ -- left : 0.00
+
+137
+ -- forward : -0.09
+ -- right : 0.00
+ -- None : -4.49
+ -- left : 0.00
+
+138
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 2.47
+ -- left : -10.56
+
+139
+ -- forward : 0.00
+ -- right : 1.33
+ -- None : 0.00
+ -- left : 0.00
+
+141
+ -- forward : 0.91
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+142
+ -- forward : -9.93
+ -- right : 0.97
+ -- None : 0.00
+ -- left : 0.00
+
+143
+ -- forward : 0.00
+ -- right : 1.13
+ -- None : 0.00
+ -- left : 0.00
+
+144
+ -- forward : 0.00
+ -- right : 0.80
+ -- None : 0.00
+ -- left : -10.82
+
+145
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 2.72
+
+146
+ -- forward : -9.22
+ -- right : 0.00
+ -- None : 1.43
+ -- left : 0.00
+
+147
+ -- forward : 0.50
+ -- right : 0.38
+ -- None : 0.00
+ -- left : 0.00
+
+150
+ -- forward : -10.88
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.98
+
+151
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -4.94
+ -- left : 0.00
+
+152
+ -- forward : 0.00
+ -- right : -20.56
+ -- None : 1.91
+ -- left : 0.00
+
+153
+ -- forward : 0.00
+ -- right : 0.05
+ -- None : 0.00
+ -- left : 0.21
+
+156
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -41.00
+
+158
+ -- forward : 0.00
+ -- right : -19.10
+ -- None : 0.98
+ -- left : 0.00
+
+159
+ -- forward : 0.00
+ -- right : 0.04
+ -- None : 0.00
+ -- left : 0.00
+
+160
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.57
+ -- left : 0.00
+
+161
+ -- forward : 0.09
+ -- right : 1.08
+ -- None : 0.00
+ -- left : 0.00
+
+162
+ -- forward : 0.00
+ -- right : 1.86
+ -- None : 0.00
+ -- left : 0.00
+
+163
+ -- forward : 0.00
+ -- right : 0.05
+ -- None : 0.00
+ -- left : 0.00
+
+164
+ -- forward : 0.00
+ -- right : 0.06
+ -- None : 0.00
+ -- left : 0.00
+
+166
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.63
+
+167
+ -- forward : 0.00
+ -- right : 0.21
+ -- None : 0.00
+ -- left : 0.00
+
+169
+ -- forward : 0.45
+ -- right : -0.15
+ -- None : -5.62
+ -- left : 0.00
+
+176
+ -- forward : -10.29
+ -- right : 0.00
+ -- None : 1.46
+ -- left : 0.00
+
+177
+ -- forward : 0.51
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+178
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.52
+ -- left : 0.00
+
+182
+ -- forward : -10.50
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.34
+
+184
+ -- forward : 0.00
+ -- right : -20.99
+ -- None : 2.40
+ -- left : -39.67
+
+185
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.61
+
+187
+ -- forward : 0.32
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+189
+ -- forward : 1.58
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -19.53
+
+192
+ -- forward : 0.00
+ -- right : 0.72
+ -- None : 1.21
+ -- left : 0.00
+
+193
+ -- forward : 0.00
+ -- right : -0.04
+ -- None : -5.25
+ -- left : 2.67
+
+194
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.49
+ -- left : 0.00
+
+195
+ -- forward : 0.92
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+199
+ -- forward : 1.33
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+200
+ -- forward : 0.00
+ -- right : 0.91
+ -- None : 0.00
+ -- left : 0.00
+
+207
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -20.81
+
+215
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -4.64
+ -- left : 0.00
+
+217
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -5.99
+ -- left : 0.00
+
+219
+ -- forward : 0.00
+ -- right : 0.32
+ -- None : 0.00
+ -- left : 0.00
+
+224
+ -- forward : -39.61
+ -- right : 0.13
+ -- None : 1.11
+ -- left : 0.00
+
+225
+ -- forward : 0.00
+ -- right : 0.56
+ -- None : -5.58
+ -- left : 0.00
+
+227
+ -- forward : 0.00
+ -- right : 0.32
+ -- None : 0.00
+ -- left : 0.00
+
+230
+ -- forward : -39.88
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -39.18
+
+231
+ -- forward : 0.00
+ -- right : 0.07
+ -- None : 0.00
+ -- left : 0.00
+
+238
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -40.64
+
+239
+ -- forward : 0.00
+ -- right : 0.61
+ -- None : 0.00
+ -- left : 0.00
+
+240
+ -- forward : -40.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+241
+ -- forward : -0.03
+ -- right : 0.00
+ -- None : -5.16
+ -- left : 0.00
+
+242
+ -- forward : -40.88
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+247
+ -- forward : -0.57
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+248
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -40.46
+
+249
+ -- forward : 0.00
+ -- right : 1.80
+ -- None : 0.00
+ -- left : 0.00
+
+250
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -40.65
+
+256
+ -- forward : 0.00
+ -- right : 1.27
+ -- None : 0.52
+ -- left : -5.06
+
+257
+ -- forward : -0.02
+ -- right : 0.83
+ -- None : -2.79
+ -- left : 0.42
+
+258
+ -- forward : -5.00
+ -- right : 0.39
+ -- None : 1.05
+ -- left : -5.36
+
+259
+ -- forward : 0.00
+ -- right : 0.93
+ -- None : 0.00
+ -- left : 0.00
+
+260
+ -- forward : 0.00
+ -- right : 0.57
+ -- None : 0.00
+ -- left : -20.20
+
+261
+ -- forward : 1.85
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.31
+
+262
+ -- forward : 0.00
+ -- right : 2.06
+ -- None : 0.00
+ -- left : 0.00
+
+263
+ -- forward : 0.00
+ -- right : 0.06
+ -- None : -5.06
+ -- left : -20.96
+
+264
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.51
+ -- left : -10.48
+
+265
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -5.28
+ -- left : 0.32
+
+266
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.38
+ -- left : 0.00
+
+267
+ -- forward : 1.38
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+268
+ -- forward : 0.00
+ -- right : 0.98
+ -- None : 0.00
+ -- left : 0.00
+
+273
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.58
+
+274
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.98
+ -- left : 0.00
+
+275
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -0.86
+
+278
+ -- forward : 0.00
+ -- right : 2.31
+ -- None : 0.00
+ -- left : 0.00
+
+280
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.80
+ -- left : 0.00
+
+281
+ -- forward : 0.60
+ -- right : 1.14
+ -- None : 0.00
+ -- left : 0.00
+
+282
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.90
+ -- left : 0.00
+
+283
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.73
+ -- left : 0.00
+
+287
+ -- forward : 0.94
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+288
+ -- forward : -10.40
+ -- right : 1.08
+ -- None : 0.95
+ -- left : 0.00
+
+289
+ -- forward : 0.44
+ -- right : 0.57
+ -- None : 0.00
+ -- left : 0.00
+
+290
+ -- forward : 0.00
+ -- right : 1.42
+ -- None : 0.00
+ -- left : 0.00
+
+291
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.50
+ -- left : 0.00
+
+292
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 2.28
+ -- left : 0.00
+
+293
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -5.59
+ -- left : 0.00
+
+294
+ -- forward : 0.00
+ -- right : 0.54
+ -- None : 0.00
+ -- left : 0.00
+
+296
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 2.38
+ -- left : 0.00
+
+297
+ -- forward : 0.70
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+301
+ -- forward : 0.00
+ -- right : 1.31
+ -- None : 0.00
+ -- left : 0.00
+
+305
+ -- forward : -0.26
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+306
+ -- forward : -10.48
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+308
+ -- forward : -9.99
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+310
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.12
+ -- left : 0.00
+
+312
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -40.95
+
+313
+ -- forward : -0.14
+ -- right : 0.47
+ -- None : 0.00
+ -- left : 0.00
+
+315
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.04
+ -- left : 0.00
+
+316
+ -- forward : 0.00
+ -- right : -19.69
+ -- None : 0.00
+ -- left : 0.00
+
+318
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -39.68
+
+320
+ -- forward : -10.48
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+321
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.40
+
+323
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 1.36
+
+327
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -19.40
+
+328
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.51
+ -- left : 0.00
+
+329
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 1.23
+
+344
+ -- forward : -40.87
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+352
+ -- forward : -39.60
+ -- right : 0.00
+ -- None : 0.50
+ -- left : 0.00
+
+353
+ -- forward : 0.00
+ -- right : 0.53
+ -- None : -5.24
+ -- left : 0.00
+
+354
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.07
+ -- left : 0.00
+
+355
+ -- forward : 0.87
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+357
+ -- forward : 0.00
+ -- right : 1.83
+ -- None : 0.00
+ -- left : 0.00
+
+358
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.85
+ -- left : 0.00
+
+360
+ -- forward : 0.00
+ -- right : 0.34
+ -- None : 0.00
+ -- left : 0.00
+
+361
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.25
+
+369
+ -- forward : 0.00
+ -- right : 2.34
+ -- None : -5.65
+ -- left : 0.00
+
+371
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -0.46
+
+376
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.16
+ -- left : 0.00
+
+377
+ -- forward : 0.30
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+381
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -5.86
+ -- left : -20.98
+
+384
+ -- forward : 0.00
+ -- right : 0.23
+ -- None : 0.98
+ -- left : -9.18
+
+385
+ -- forward : 0.48
+ -- right : 0.44
+ -- None : -2.29
+ -- left : 0.51
+
+386
+ -- forward : -9.07
+ -- right : 0.55
+ -- None : 1.19
+ -- left : -10.14
+
+387
+ -- forward : 0.98
+ -- right : 0.00
+ -- None : 0.43
+ -- left : -0.03
+
+388
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.46
+ -- left : -40.20
+
+389
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : -4.55
+ -- left : 0.00
+
+390
+ -- forward : 0.00
+ -- right : 0.27
+ -- None : 0.47
+ -- left : 0.00
+
+391
+ -- forward : 0.00
+ -- right : 0.73
+ -- None : 0.00
+ -- left : -20.57
+
+392
+ -- forward : -10.04
+ -- right : 0.00
+ -- None : 1.24
+ -- left : -10.78
+
+393
+ -- forward : 0.58
+ -- right : 0.70
+ -- None : -4.49
+ -- left : 0.00
+
+394
+ -- forward : -10.91
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+395
+ -- forward : 0.00
+ -- right : 0.59
+ -- None : 0.00
+ -- left : 0.00
+
+396
+ -- forward : 0.00
+ -- right : 1.87
+ -- None : 0.00
+ -- left : 0.00
+
+398
+ -- forward : -10.23
+ -- right : -0.04
+ -- None : 0.00
+ -- left : -10.21
+
+401
+ -- forward : 2.82
+ -- right : 0.00
+ -- None : -4.46
+ -- left : 0.00
+
+403
+ -- forward : 0.00
+ -- right : 1.19
+ -- None : 0.00
+ -- left : 0.00
+
+406
+ -- forward : -10.85
+ -- right : 1.35
+ -- None : 0.00
+ -- left : 0.00
+
+407
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -19.44
+
+408
+ -- forward : -19.76
+ -- right : -20.40
+ -- None : 0.00
+ -- left : 0.00
+
+409
+ -- forward : 1.30
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.59
+
+410
+ -- forward : -40.59
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+411
+ -- forward : 0.00
+ -- right : 0.91
+ -- None : 0.00
+ -- left : 0.00
+
+412
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.89
+ -- left : 0.00
+
+414
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 2.27
+ -- left : 0.00
+
+416
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.73
+
+417
+ -- forward : 1.91
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+418
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.89
+ -- left : 0.00
+
+419
+ -- forward : 0.00
+ -- right : 1.42
+ -- None : 0.00
+ -- left : 0.00
+
+422
+ -- forward : -10.99
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+424
+ -- forward : 0.00
+ -- right : 0.46
+ -- None : 0.00
+ -- left : 0.00
+
+425
+ -- forward : 0.00
+ -- right : 1.40
+ -- None : 0.00
+ -- left : 0.00
+
+438
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.21
+
+440
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.73
+ -- left : 0.00
+
+441
+ -- forward : 2.01
+ -- right : 0.00
+ -- None : -5.64
+ -- left : 0.19
+
+443
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 1.51
+
+448
+ -- forward : -10.78
+ -- right : 1.52
+ -- None : 0.00
+ -- left : 0.00
+
+449
+ -- forward : 0.00
+ -- right : 1.11
+ -- None : -5.66
+ -- left : 0.00
+
+450
+ -- forward : -9.69
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+451
+ -- forward : 2.17
+ -- right : 0.54
+ -- None : 0.00
+ -- left : 0.00
+
+452
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.18
+ -- left : 0.00
+
+455
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -19.59
+
+470
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 2.23
+ -- left : 0.00
+
+473
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.52
+
+477
+ -- forward : 0.00
+ -- right : 1.46
+ -- None : 0.00
+ -- left : 0.00
+
+480
+ -- forward : 0.00
+ -- right : 1.02
+ -- None : 0.00
+ -- left : 0.00
+
+481
+ -- forward : 1.15
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.16
+
+483
+ -- forward : 2.06
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+485
+ -- forward : 0.00
+ -- right : 0.09
+ -- None : 0.00
+ -- left : 0.00
+
+487
+ -- forward : 2.84
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+488
+ -- forward : -39.89
+ -- right : 0.00
+ -- None : 2.69
+ -- left : -19.62
+
+489
+ -- forward : 1.95
+ -- right : 0.00
+ -- None : -4.18
+ -- left : 0.00
+
+490
+ -- forward : -39.12
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+499
+ -- forward : 0.00
+ -- right : 0.81
+ -- None : 1.80
+ -- left : 0.00
+
+502
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -39.13
+
+504
+ -- forward : -39.35
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -40.14
+
+505
+ -- forward : 2.69
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+510
+ -- forward : -40.05
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -39.57
+

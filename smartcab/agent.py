@@ -12,7 +12,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """
 
-    def __init__(self, env, learning=True, epsilon=1.0, alpha=0.2):
+    def __init__(self, env, learning=True, epsilon=1.0, alpha=0.5):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -24,7 +24,7 @@ class LearningAgent(Agent):
         self.alpha = alpha       # Learning factor
         self.trials_completed = 0
         self.a = .01
-
+        self.optimized = True
         ###########
         ## TO DO ##
         ###########
@@ -50,11 +50,14 @@ class LearningAgent(Agent):
             self.epsilon = 0
             self.alpha = 0
         else:
-            trials_completed = self.trials_completed
-            a = self.a
-            self.epsilon = float(1)/math.exp(float( a * trials_completed) )
+            if self.optimized == True:
+                trials_completed = self.trials_completed
+                a = self.a
+                self.epsilon = float(1)/math.exp(float( a * trials_completed) )
 
-            self.trials_completed += 1
+                self.trials_completed += 1
+            else:
+                self.epsilon = self.epsilon - .05
         return
 
     def build_state(self):
@@ -104,7 +107,7 @@ class LearningAgent(Agent):
 
         maxQ = self.Q[state][maxQaction]
 
-        return (maxQaction, maxQ)
+        return ( maxQaction, maxQ )
 
 
     def createQ(self, state):
@@ -137,7 +140,7 @@ class LearningAgent(Agent):
         self.next_waypoint = self.planner.next_waypoint()
 
         action = None
-
+        action_hash = self.Q[state]
         ###########
         ## TO DO ##
         ###########
@@ -152,9 +155,16 @@ class LearningAgent(Agent):
             if rando < ( self.epsilon * 100 ) :
                 action = choice(self.valid_actions)
             else:
-                max_action, maxQ = self.get_maxQ(state)
-                action = max_action
+                maxQaction, maxQ = self.get_maxQ(state)
+                action_array = [action_hash[a] for a in self.valid_actions]
+                count = action_array.count(maxQ)
 
+                if count > 1 :
+                    equal_best_indicies = [ i for i in range(len(self.valid_actions)) if action_array[i] == maxQ]
+                    index = choice(equal_best_indicies)
+                    action = self.valid_actions[index]
+                else:
+                    action = maxQaction
         else:
             action = choice(self.valid_actions)
 
@@ -172,16 +182,15 @@ class LearningAgent(Agent):
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
 
-        old_state = self.state
+        # old_state = self.state
 
         if self.learning == True:
-            currentQ = self.Q[old_state][action]
-            max_action, maxQ = self.get_maxQ(state)
+            currentQ = self.Q[state][action]
 
             if currentQ is 0:
-                self.Q[old_state][action] = reward
+                self.Q[state][action] = reward
             else:
-                self.Q[old_state][action] = (reward + maxQ- currentQ)*self.alpha + currentQ*(1-self.alpha)
+                self.Q[state][action] = (reward - currentQ)*self.alpha + currentQ*(1-self.alpha)
 
         return
 
