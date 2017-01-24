@@ -12,7 +12,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """
 
-    def __init__(self, env, learning=True, epsilon=1.0, alpha=0.5):
+    def __init__(self, env, learning=True, epsilon=1.0, alpha=0.2):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -23,7 +23,7 @@ class LearningAgent(Agent):
         self.epsilon = epsilon   # Random exploration factor
         self.alpha = alpha       # Learning factor
         self.trials_completed = 0
-        self.a = .01
+        self.a = .005
         self.optimized = True
         ###########
         ## TO DO ##
@@ -156,11 +156,11 @@ class LearningAgent(Agent):
                 action = choice(self.valid_actions)
             else:
                 maxQaction, maxQ = self.get_maxQ(state)
-                action_array = [action_hash[a] for a in self.valid_actions]
+                action_array = [ action_hash[a] for a in self.valid_actions ]
                 count = action_array.count(maxQ)
 
                 if count > 1 :
-                    equal_best_indicies = [ i for i in range(len(self.valid_actions)) if action_array[i] == maxQ]
+                    equal_best_indicies = [ i for i in range(len(self.valid_actions)) if action_array[i] == maxQ ]
                     index = choice(equal_best_indicies)
                     action = self.valid_actions[index]
                 else:
@@ -187,10 +187,7 @@ class LearningAgent(Agent):
         if self.learning == True:
             currentQ = self.Q[state][action]
 
-            if currentQ is 0:
-                self.Q[state][action] = reward
-            else:
-                self.Q[state][action] = (reward - currentQ)*self.alpha + currentQ*(1-self.alpha)
+            self.Q[state][action] = ( reward * self.alpha ) + currentQ*(1-self.alpha)
 
         return
 
